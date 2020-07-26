@@ -84,7 +84,7 @@ resource "azurerm_lb_backend_address_pool" "test" {
 }
 
 resource "azurerm_network_interface" "main" {
-  count               = 2
+  count               = "${var.vm_count}"
   name                = "acctni${count.index}"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
@@ -101,13 +101,13 @@ resource "azurerm_network_interface" "main" {
 }
 
 resource "azurerm_network_interface_security_group_association" "example" {
-    count                     = 2
+    count                     = "${var.vm_count}"
     network_interface_id      = azurerm_network_interface.main[count.index].id
     network_security_group_id = azurerm_network_security_group.test.id
 }
 
 resource "azurerm_managed_disk" "test" {
- count                = 2
+ count                = "${var.vm_count}"
  name                 = "datadisk_existing_${count.index}"
  location             = azurerm_resource_group.main.location
  resource_group_name  = azurerm_resource_group.main.name
@@ -144,7 +144,7 @@ resource "azurerm_availability_set" "avset" {
 }
 
 resource "azurerm_virtual_machine" "main" {
-  count                           = 2
+  count                           = "${var.vm_count}"
   name                            = "acctvm${count.index}"
   resource_group_name             = azurerm_resource_group.main.name
   location                        = azurerm_resource_group.main.location
