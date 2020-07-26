@@ -34,7 +34,8 @@ For this project, you will write a Packer template and a Terraform template to d
 9. Then create the solution.plan file by running the command terrafrom plan
 10. Next run the commad terrafrom apply to create the infrastructure.
 11. After successfull creation run the command terrafrom destory to clean up all your resources.
+12. A tagging policy is enforced on this resource group whose screenshot can be seen in the folder.
 
 ### Output
-**Your words here**
-
+After running all the above commands all the resources will be created and you can view them in your azure portal.
+Screenshot of successfull completion can be seen in the screenshot folder.
